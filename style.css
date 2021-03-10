@@ -107,6 +107,11 @@ main {
   text-align: center;
 }
 
+.header-statement {
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
 .rateBtn:hover {
   background: rgba(255, 255, 255, 0.1);
   border: solid 1px rgba(255, 255, 255, 0.5);
