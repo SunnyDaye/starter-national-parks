@@ -83,6 +83,95 @@ for(let i=0;i<areas.length;i++){
 // parent.removeChild(child);
 
 
+/********Park Sorter by Name**********/
+// Function for sorting by name
+const sortByName = (parkA, parkB) => {
+    const parkAName = parkA.querySelector("h2").innerText;
+    const parkBName = parkB.querySelector("h2").innerText;
+    if (parkAName < parkBName) {
+      return -1;
+    } else if (parkAName > parkBName) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+
+//Function to sort by ratings
+const sortByRating = (parkA, parkB) => {
+    //grab the rating value
+    const parkARating = parkA.querySelector(".rating .value").innerText;
+    const parkBRating = parkB.querySelector(".rating .value").innerText;
+    //Compare values to be sorted
+    if(parkARating < parkBRating){
+        return -1;
+    }else if(parkARating > parkBRating){
+        return 1;
+    }else{
+        return 0;
+    }
+};
+  
+  // Function for handling the `nameSorter` click
+  const nameSorterClickHandler = (event) => {
+    event.preventDefault();
+  
+    // 1.  Get the main element
+    const main = document.querySelector("main");
+  
+    // 2. Get the list of parks
+    const parksList = main.querySelectorAll(".park");
+  
+    // 3. Empty the main
+    main.innerHTML = "";
+  
+    // 4. Create an array
+    const parksArray = Array.from(parksList);
+  
+    // 5. Sort the array
+    parksArray.sort(sortByName);
+  
+    // 6. Insert each park into the DOM
+    parksArray.forEach((park) => {
+      main.appendChild(park);
+    });
+  };
+
+  const ratingSorterClickHandler = (event) => {
+    event.preventDefault();
+
+    //1.get the parent which is margin
+    const main = document.querySelector("main");
+
+    //2. get the parks listener
+    const parks = main.querySelectorAll(".park");
+
+    //3. empty main
+    main.innerHTML = "";
+
+    //4. make parks into an arrays
+    const parksArray = Array.from(parks);
+
+    //5.sort the array by ratings
+    parksArray.sort(sortByRating);
+
+    //add each park to margin
+    parksArray.forEach(park => main.appendChild(park));
+
+  };
+  
+const main = () => { //function to run code when the DOM is finished loading
+    // Select the `nameSorter` link
+    const nameSorter = document.querySelector("#nameSorter");
+    const ratingSorter = document.querySelector("#ratingSorter");
+  
+    // Add an event listener
+    nameSorter.addEventListener("click", nameSorterClickHandler);
+    ratingSorter.addEventListener("click", ratingSorterClickHandler);
+}
+
+window.addEventListener("DOMContentLoaded", main); //Pu
+
  
 
 
